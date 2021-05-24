@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Location Component should render correctly 1`] = `
+<DataListItem
+  aria-labelledby="location-10"
+  isExpanded={false}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <DataListItemRow>
+    <DataListCell
+      isFilled={true}
+    >
+      <Tooltip
+        appendTo={[Function]}
+        aria="describedby"
+        boundary="window"
+        className=""
+        content="x"
+        distance={15}
+        enableFlip={true}
+        entryDelay={500}
+        exitDelay={500}
+        flipBehavior={
+          Array [
+            "top",
+            "right",
+            "bottom",
+            "left",
+            "top",
+            "right",
+            "bottom",
+          ]
+        }
+        id=""
+        isAppLauncher={false}
+        isContentLeftAligned={false}
+        isVisible={false}
+        maxWidth="18.75rem"
+        position="top"
+        tippyProps={Object {}}
+        trigger="mouseenter focus"
+        zIndex={9999}
+      >
+        <span
+          id="location-10"
+        >
+          x
+        </span>
+      </Tooltip>
+    </DataListCell>
+    <DataListCell
+      isFilled={false}
+    >
+      <Component
+        isDisabled={false}
+        onClick={[Function]}
+        type="button"
+        variant="link"
+      >
+        <TimesIcon
+          color="currentColor"
+          noVerticalAlign={false}
+          size="sm"
+          title={null}
+        />
+      </Component>
+    </DataListCell>
+  </DataListItemRow>
+</DataListItem>
+`;
+
+exports[`Location Component should render correctly when description is missing 1`] = `
+<DataListItem
+  aria-labelledby="location-11"
+  isExpanded={false}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <DataListItemRow>
+    <DataListCell
+      isFilled={true}
+    >
+      <span
+        id="location-11"
+      >
+        Location 11
+      </span>
+    </DataListCell>
+    <DataListCell
+      isFilled={false}
+    >
+      <Component
+        isDisabled={false}
+        onClick={[Function]}
+        type="button"
+        variant="link"
+      >
+        <TimesIcon
+          color="currentColor"
+          noVerticalAlign={false}
+          size="sm"
+          title={null}
+        />
+      </Component>
+    </DataListCell>
+  </DataListItemRow>
+</DataListItem>
+`;

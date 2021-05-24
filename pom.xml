@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright 2019 Red Hat, Inc. and/or its affiliates.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.optaplanner</groupId>
+    <artifactId>optaplanner-build-parent</artifactId>
+    <version>8.6.0.Final</version>
+    <relativePath/>
+  </parent>
+
+  <groupId>org.optaweb.vehiclerouting</groupId>
+  <artifactId>optaweb-vehicle-routing</artifactId>
+  <packaging>pom</packaging>
+
+  <name>OptaWeb Vehicle Routing</name>
+
+  <!-- Modules are sorted in preferred build order. -->
+  <modules>
+    <module>optaweb-vehicle-routing-backend</module>
+    <module>optaweb-vehicle-routing-frontend</module>
+    <module>optaweb-vehicle-routing-standalone</module>
+    <module>optaweb-vehicle-routing-docs</module>
+    <module>optaweb-vehicle-routing-distribution</module>
+  </modules>
+
+  <properties>
+    <version.com.graphhopper>0.13.0-pre13</version.com.graphhopper>
+    <version.com.h2database>1.4.199</version.com.h2database>
+    <version.com.neovisionaries>1.27</version.com.neovisionaries>
+    <version.frontend-maven-plugin>1.10.0</version.frontend-maven-plugin>
+    <version.node>v12.16.2</version.node>
+    <version.npm>6.14.4</version.npm>
+    <version.org.hibernate>5.4.27.Final</version.org.hibernate>
+    <version.org.mockito>3.7.0</version.org.mockito>
+    <!-- Override protobuf version from Quarkus to make it compatible with GraphHopper. -->
+    <protobuf-java.version>3.6.1</protobuf-java.version>
+    <version.com.google.protobuf>3.6.1</version.com.google.protobuf>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.google.protobuf</groupId>
+        <artifactId>protobuf-java</artifactId>
+        <version>${version.com.google.protobuf}</version>
+      </dependency>
+      <!-- Internal dependencies -->
+      <dependency>
+        <groupId>org.optaweb.vehiclerouting</groupId>
+        <artifactId>optaweb-vehicle-routing-backend</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.optaweb.vehiclerouting</groupId>
+        <artifactId>optaweb-vehicle-routing-docs</artifactId>
+        <version>${project.version}</version>
+        <type>zip</type>
+      </dependency>
+      <dependency>
+        <groupId>org.optaweb.vehiclerouting</groupId>
+        <artifactId>optaweb-vehicle-routing-frontend</artifactId>
+        <version>${project.version}</version>
+        <type>war</type>
+      </dependency>
+      <dependency>
+        <groupId>org.optaweb.vehiclerouting</groupId>
+        <artifactId>optaweb-vehicle-routing-standalone</artifactId>
+        <version>${project.version}</version>
+        <classifier>quarkus-app</classifier>
+        <type>zip</type>
+      </dependency>
+      <!-- BOM imports -->
+      <dependency>
+        <groupId>io.quarkus</groupId>
+        <artifactId>quarkus-bom</artifactId>
+        <version>${version.io.quarkus}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <!-- Dependencies not managed by optaplanner-build-parent and version overrides -->
+      <dependency>
+        <groupId>com.graphhopper</groupId>
+        <artifactId>graphhopper-reader-osm</artifactId>
+        <version>${version.com.graphhopper}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.neovisionaries</groupId>
+        <artifactId>nv-i18n</artifactId>
+        <version>${version.com.neovisionaries}</version>
+      </dependency>
+      <!-- JSON testing -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-test</artifactId>
+        <version>2.2.6.RELEASE</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.jayway.jsonpath</groupId>
+        <artifactId>json-path</artifactId>
+        <version>2.4.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.skyscreamer</groupId>
+        <artifactId>jsonassert</artifactId>
+        <version>1.5.0</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <executions>
+            <execution>
+              <id>analyze-only</id>
+              <phase>none</phase>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+          <version>${version.org.springframework.boot}</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <repositories>
+    <!-- Bootstrap repository to locate the parent POM when it has not been built locally. -->
+    <repository>
+      <id>jboss-public-repository-group</id>
+      <name>JBoss Public Repository Group</name>
+      <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+      <layout>default</layout>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>never</updatePolicy>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>daily</updatePolicy>
+      </snapshots>
+    </repository>
+  </repositories>
+</project>

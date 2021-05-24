@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Vehicles page should render correctly 1`] = `
+<Fragment>
+  <Split
+    gutter="md"
+    style={
+      Object {
+        "overflowY": "auto",
+      }
+    }
+  >
+    <SplitItem
+      isFilled={true}
+    >
+      <TextContent>
+        <Text
+          component="h1"
+        >
+          Vehicles (2)
+        </Text>
+      </TextContent>
+    </SplitItem>
+    <SplitItem
+      isFilled={false}
+    >
+      <Component
+        onClick={[MockFunction]}
+        style={
+          Object {
+            "marginBottom": 16,
+            "marginLeft": 16,
+          }
+        }
+      >
+        Add
+      </Component>
+    </SplitItem>
+  </Split>
+  <div
+    style={
+      Object {
+        "overflowY": "auto",
+      }
+    }
+  >
+    <DataList
+      aria-label="List of vehicles"
+    >
+      <Vehicle
+        capacity={5}
+        capacityChangeHandler={[Function]}
+        description="Vehicle 1"
+        id={1}
+        key="1"
+        removeHandler={[MockFunction]}
+      />
+      <Vehicle
+        capacity={5}
+        capacityChangeHandler={[Function]}
+        description="Vehicle 2"
+        id={2}
+        key="2"
+        removeHandler={[MockFunction]}
+      />
+    </DataList>
+  </div>
+</Fragment>
+`;

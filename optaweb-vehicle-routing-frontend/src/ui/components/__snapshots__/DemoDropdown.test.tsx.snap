@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Demo dropdown button should be disabled with empty demos 1`] = `
+<Dropdown
+  dropdownItems={Array []}
+  isOpen={false}
+  onSelect={[Function]}
+  position="right"
+  style={
+    Object {
+      "marginBottom": 16,
+      "marginLeft": 16,
+    }
+  }
+  toggle={
+    <DropdownToggle
+      disabled={true}
+      onToggle={[Function]}
+    >
+      Load demo...
+    </DropdownToggle>
+  }
+/>
+`;
+
+exports[`Demo dropdown button should render correctly with a couple of demos 1`] = `
+<Dropdown
+  dropdownItems={
+    Array [
+      <DropdownItem>
+        demo 1
+      </DropdownItem>,
+      <DropdownItem>
+        demo 2
+      </DropdownItem>,
+    ]
+  }
+  isOpen={false}
+  onSelect={[Function]}
+  position="right"
+  style={
+    Object {
+      "marginBottom": 16,
+      "marginLeft": 16,
+    }
+  }
+  toggle={
+    <DropdownToggle
+      disabled={false}
+      onToggle={[Function]}
+    >
+      Load demo...
+    </DropdownToggle>
+  }
+/>
+`;
