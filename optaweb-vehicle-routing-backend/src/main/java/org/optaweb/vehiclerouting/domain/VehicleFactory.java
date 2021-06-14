@@ -16,6 +16,8 @@
 
 package org.optaweb.vehiclerouting.domain;
 
+import java.util.Set;
+
 /**
  * Creates {@link Vehicle} instances.
  */
@@ -32,8 +34,8 @@ public class VehicleFactory {
      * @param capacity vehicle's capacity
      * @return vehicle data
      */
-    public static VehicleData vehicleData(String name, int capacity) {
-        return new VehicleData(name, capacity);
+    public static VehicleData vehicleData(String name, int capacity, Set<String> skillSet) {
+        return new VehicleData(name, capacity, skillSet);
     }
 
     /**
@@ -42,10 +44,11 @@ public class VehicleFactory {
      * @param id vehicle's ID
      * @param name vehicle's name
      * @param capacity vehicle's capacity
+     * @param skillSet driver's skill set
      * @return new vehicle
      */
-    public static Vehicle createVehicle(long id, String name, int capacity) {
-        return new Vehicle(id, name, capacity);
+    public static Vehicle createVehicle(long id, String name, int capacity, Set<String> skillSet) {
+        return new Vehicle(id, name, capacity, skillSet);
     }
 
     /**
@@ -55,6 +58,6 @@ public class VehicleFactory {
      * @return new testing vehicle instance
      */
     public static Vehicle testVehicle(long id) {
-        return new Vehicle(id, "Vehicle " + id, 0);
+        return new Vehicle(id, "Vehicle " + id, 0, null);
     }
 }

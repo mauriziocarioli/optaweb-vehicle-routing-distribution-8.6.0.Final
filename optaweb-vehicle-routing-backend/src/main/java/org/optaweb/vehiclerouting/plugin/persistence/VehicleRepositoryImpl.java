@@ -20,6 +20,7 @@ import static java.util.stream.Collectors.toList;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -43,8 +44,8 @@ public class VehicleRepositoryImpl implements VehicleRepository {
     }
 
     @Override
-    public Vehicle createVehicle(int capacity) {
-        VehicleEntity vehicleEntity = new VehicleEntity(0, null, capacity);
+    public Vehicle createVehicle(int capacity, Set<String> skillSet) {
+        VehicleEntity vehicleEntity = new VehicleEntity(0, null, capacity, skillSet);
         repository.persist(vehicleEntity);
         vehicleEntity.setName("Vehicle " + vehicleEntity.getId());
         Vehicle vehicle = toDomain(vehicleEntity);
@@ -54,7 +55,7 @@ public class VehicleRepositoryImpl implements VehicleRepository {
 
     @Override
     public Vehicle createVehicle(VehicleData vehicleData) {
-        VehicleEntity vehicleEntity = new VehicleEntity(0, vehicleData.name(), vehicleData.capacity());
+        VehicleEntity vehicleEntity = new VehicleEntity(0, vehicleData.name(), vehicleData.capacity(), vehicleData.skillSet());
         repository.persist(vehicleEntity);
         Vehicle vehicle = toDomain(vehicleEntity);
         logger.info("Created vehicle {}.", vehicle);
@@ -95,13 +96,15 @@ public class VehicleRepositoryImpl implements VehicleRepository {
                 "Can't change Vehicle{id=" + vehicleId + "} because it doesn't exist"));
         vehicleEntity.setCapacity(capacity);
         repository.flush();
-        return VehicleFactory.createVehicle(vehicleEntity.getId(), vehicleEntity.getName(), vehicleEntity.getCapacity());
+        return VehicleFactory.createVehicle(vehicleEntity.getId(), vehicleEntity.getName(), vehicleEntity.getCapacity(),
+                vehicleEntity.getSkillSet());
     }
 
     private static Vehicle toDomain(VehicleEntity vehicleEntity) {
         return VehicleFactory.createVehicle(
                 vehicleEntity.getId(),
                 vehicleEntity.getName(),
-                vehicleEntity.getCapacity());
+                vehicleEntity.getCapacity(),
+                vehicleEntity.getSkillSet());
     }
 }

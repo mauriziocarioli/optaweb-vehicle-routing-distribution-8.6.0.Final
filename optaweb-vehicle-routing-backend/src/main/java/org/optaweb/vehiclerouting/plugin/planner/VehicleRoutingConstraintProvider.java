@@ -29,6 +29,7 @@ public class VehicleRoutingConstraintProvider implements ConstraintProvider {
     @Override
     public Constraint[] defineConstraints(ConstraintFactory constraintFactory) {
         return new Constraint[] {
+                add skill
                 vehicleCapacity(constraintFactory),
                 distanceFromPreviousStandstill(constraintFactory),
                 distanceFromLastVisitToDepot(constraintFactory)
@@ -60,5 +61,13 @@ public class VehicleRoutingConstraintProvider implements ConstraintProvider {
                         "distance from last visit to depot",
                         HardSoftLongScore.ONE_SOFT,
                         PlanningVisit::distanceToDepot);
+    }
+
+    Constraint skill(ConstraintFactory constraintFactory) {
+        return constraintFactory.from(PlanningVisit.class)
+                .filter(visit -> !visit.getVehicle().getSkillSet().contains(visit.getRequiredSkill()))
+                .penalize(
+                        "required skill",
+                        HardSoftLongScore.ONE_HARD);
     }
 }

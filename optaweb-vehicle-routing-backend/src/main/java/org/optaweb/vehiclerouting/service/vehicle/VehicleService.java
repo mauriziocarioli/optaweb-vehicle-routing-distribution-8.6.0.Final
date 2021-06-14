@@ -44,7 +44,7 @@ public class VehicleService {
 
     @Transactional
     public Vehicle createVehicle() {
-        Vehicle vehicle = vehicleRepository.createVehicle(DEFAULT_VEHICLE_CAPACITY);
+        Vehicle vehicle = vehicleRepository.createVehicle(DEFAULT_VEHICLE_CAPACITY, null);
         addVehicle(vehicle);
         return vehicle;
     }

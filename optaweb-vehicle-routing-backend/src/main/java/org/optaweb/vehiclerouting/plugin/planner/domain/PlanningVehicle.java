@@ -18,6 +18,7 @@ package org.optaweb.vehiclerouting.plugin.planner.domain;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.Set;
 
 import org.optaplanner.core.api.domain.lookup.PlanningId;
 
@@ -27,6 +28,7 @@ public class PlanningVehicle implements Standstill {
     private long id;
     private int capacity;
     private PlanningDepot depot;
+    private Set<String> skillSet;
 
     // Shadow variables
     private PlanningVisit nextVisit;
@@ -57,6 +59,14 @@ public class PlanningVehicle implements Standstill {
 
     public void setDepot(PlanningDepot depot) {
         this.depot = depot;
+    }
+
+    public Set<String> getSkillSet() {
+        return skillSet;
+    }
+
+    public void setSkillSet(Set<String> skillSet) {
+        this.skillSet = skillSet;
     }
 
     @Override

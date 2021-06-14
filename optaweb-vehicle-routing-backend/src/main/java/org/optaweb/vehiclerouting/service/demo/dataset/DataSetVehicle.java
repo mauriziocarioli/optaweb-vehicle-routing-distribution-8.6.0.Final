@@ -16,6 +16,8 @@
 
 package org.optaweb.vehiclerouting.service.demo.dataset;
 
+import java.util.Set;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -28,10 +30,14 @@ public class DataSetVehicle {
     final String name;
     @JsonProperty
     final int capacity;
+    @JsonProperty
+    final Set<String> skillSet;
 
     @JsonCreator
-    public DataSetVehicle(@JsonProperty("name") String name, @JsonProperty("capacity") int capacity) {
+    public DataSetVehicle(@JsonProperty("name") String name, @JsonProperty("capacity") int capacity,
+            @JsonProperty("skillSet") Set<String> skillSet) {
         this.name = name;
         this.capacity = capacity;
+        this.skillSet = skillSet;
     }
 }

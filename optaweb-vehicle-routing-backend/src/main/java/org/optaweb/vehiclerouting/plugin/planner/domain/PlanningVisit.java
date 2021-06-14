@@ -30,6 +30,7 @@ public class PlanningVisit implements Standstill {
     private long id;
     private PlanningLocation location;
     private int demand;
+    private String requiredSkill;
 
     // Planning variable: changes during planning, between score calculations.
     @PlanningVariable(valueRangeProviderRefs = { "vehicleRange", "visitRange" },
@@ -68,6 +69,14 @@ public class PlanningVisit implements Standstill {
 
     public void setDemand(int demand) {
         this.demand = demand;
+    }
+
+    public String getRequiredSkill() {
+        return requiredSkill;
+    }
+
+    public void setRequiredSkill(String requiredSkill) {
+        this.requiredSkill = requiredSkill;
     }
 
     public Standstill getPreviousStandstill() {
