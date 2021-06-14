@@ -28,14 +28,17 @@ class DataSetLocation {
     private double latitude;
     @JsonProperty(value = "lng")
     private double longitude;
+    @JsonProperty(value = "requiredSkill")
+    private String requiredSkill;
 
     private DataSetLocation() {
         // for unmarshalling
     }
 
-    DataSetLocation(String label, double latitude, double longitude) {
+    DataSetLocation(String label, double latitude, double longitude, String requiredSkill) {
         this.latitude = latitude;
         this.longitude = longitude;
+        this.requiredSkill = requiredSkill;
         this.label = label;
     }
 
@@ -50,6 +53,14 @@ class DataSetLocation {
 
     public void setLabel(String label) {
         this.label = label;
+    }
+
+    public String getRequiredSkill() {
+        return requiredSkill;
+    }
+
+    public void setRequiredSkill(String requiredSkill) {
+        this.requiredSkill = requiredSkill;
     }
 
     /**
@@ -84,6 +95,7 @@ class DataSetLocation {
                 "label='" + label + '\'' +
                 ", latitude=" + latitude +
                 ", longitude=" + longitude +
+                ", required skill=" + requiredSkill +
                 '}';
     }
 }

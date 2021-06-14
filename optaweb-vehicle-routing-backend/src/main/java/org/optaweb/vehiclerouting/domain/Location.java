@@ -23,13 +23,13 @@ public class Location extends LocationData {
 
     private final long id;
 
-    public Location(long id, Coordinates coordinates) {
-        // TODO remove this?
-        this(id, coordinates, "");
+    public Location(long id, Coordinates coordinates, String requiredSkill) {
+        super(coordinates, requiredSkill, null);
+        this.id = id;
     }
 
-    public Location(long id, Coordinates coordinates, String description) {
-        super(coordinates, description);
+    public Location(long id, Coordinates coordinates, String requiredSkill, String description) {
+        super(coordinates, requiredSkill, description);
         this.id = id;
     }
 

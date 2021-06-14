@@ -35,6 +35,8 @@ public class PortableLocation {
     private final BigDecimal latitude;
     @JsonProperty(value = "lng", required = true)
     private final BigDecimal longitude;
+    @JsonProperty(value = "requiredSkill", required = true)
+    private final String requiredSkill = "";
 
     private final String description;
 
@@ -44,6 +46,7 @@ public class PortableLocation {
                 location.id(),
                 location.coordinates().latitude(),
                 location.coordinates().longitude(),
+                location.requiredSkill(),
                 location.description());
     }
 
@@ -52,6 +55,7 @@ public class PortableLocation {
             @JsonProperty(value = "id") long id,
             @JsonProperty(value = "lat") BigDecimal latitude,
             @JsonProperty(value = "lng") BigDecimal longitude,
+            @JsonProperty(value = "requiredSkill") String requiredSkill,
             @JsonProperty(value = "description") String description) {
         this.id = id;
         this.latitude = Objects.requireNonNull(latitude);
@@ -69,6 +73,10 @@ public class PortableLocation {
 
     public BigDecimal getLongitude() {
         return longitude;
+    }
+
+    public String getRequiredSkill() {
+        return requiredSkill;
     }
 
     public String getDescription() {

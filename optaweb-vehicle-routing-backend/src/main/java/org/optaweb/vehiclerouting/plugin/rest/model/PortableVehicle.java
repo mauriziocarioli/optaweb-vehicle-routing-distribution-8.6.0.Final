@@ -17,6 +17,7 @@
 package org.optaweb.vehiclerouting.plugin.rest.model;
 
 import java.util.Objects;
+import java.util.Set;
 
 import org.optaweb.vehiclerouting.domain.Vehicle;
 
@@ -27,16 +28,18 @@ public class PortableVehicle {
 
     private final long id;
     private final String name;
+    private final Set<String> skillSet;
     private final int capacity;
 
     static PortableVehicle fromVehicle(Vehicle vehicle) {
         Objects.requireNonNull(vehicle, "vehicle must not be null");
-        return new PortableVehicle(vehicle.id(), vehicle.name(), vehicle.capacity());
+        return new PortableVehicle(vehicle.id(), vehicle.name(), vehicle.skillSet(), vehicle.capacity());
     }
 
-    PortableVehicle(long id, String name, int capacity) {
+    PortableVehicle(long id, String name, Set<String> skillSet, int capacity) {
         this.id = id;
         this.name = Objects.requireNonNull(name);
+        this.skillSet = skillSet;
         this.capacity = capacity;
     }
 
@@ -46,6 +49,10 @@ public class PortableVehicle {
 
     public String getName() {
         return name;
+    }
+
+    public Set<String> getSkillSet() {
+        return skillSet;
     }
 
     public int getCapacity() {
@@ -62,13 +69,14 @@ public class PortableVehicle {
         }
         PortableVehicle vehicle = (PortableVehicle) o;
         return id == vehicle.id &&
+                skillSet == vehicle.skillSet &&
                 capacity == vehicle.capacity &&
                 name.equals(vehicle.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, capacity);
+        return Objects.hash(id, name, skillSet, capacity);
     }
 
     @Override
@@ -76,6 +84,7 @@ public class PortableVehicle {
         return "PortableVehicle{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", skillSet='" + skillSet.toString() + '\'' +
                 ", capacity=" + capacity +
                 '}';
     }

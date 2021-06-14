@@ -114,11 +114,15 @@ public class DataSetMarshaller {
         return new DataSetLocation(
                 locationData.description(),
                 locationData.coordinates().latitude().doubleValue(),
-                locationData.coordinates().longitude().doubleValue());
+                locationData.coordinates().longitude().doubleValue(),
+                locationData.requiredSkill());
     }
 
     static DataSetVehicle toDataSet(VehicleData vehicleData) {
-        return new DataSetVehicle(vehicleData.name(), vehicleData.capacity(), vehicleData.skillSet());
+        return new DataSetVehicle(
+                vehicleData.name(),
+                vehicleData.capacity(),
+                vehicleData.skillSet());
     }
 
     static RoutingProblem toDomain(DataSet dataSet) {
@@ -138,6 +142,7 @@ public class DataSetMarshaller {
     static LocationData toDomain(DataSetLocation dataSetLocation) {
         return new LocationData(
                 Coordinates.valueOf(dataSetLocation.getLatitude(), dataSetLocation.getLongitude()),
+                dataSetLocation.getRequiredSkill(),
                 dataSetLocation.getLabel());
     }
 

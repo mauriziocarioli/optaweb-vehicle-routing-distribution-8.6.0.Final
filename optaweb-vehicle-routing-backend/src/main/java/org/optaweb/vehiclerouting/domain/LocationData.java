@@ -26,6 +26,7 @@ import java.util.Objects;
 public class LocationData {
 
     private final Coordinates coordinates;
+    private final String requiredSkill;
     private final String description;
 
     /**
@@ -34,8 +35,9 @@ public class LocationData {
      * @param coordinates never {@code null}
      * @param description never {@code null}
      */
-    public LocationData(Coordinates coordinates, String description) {
+    public LocationData(Coordinates coordinates, String requiredSkill, String description) {
         this.coordinates = Objects.requireNonNull(coordinates);
+        this.requiredSkill = Objects.requireNonNull(requiredSkill);
         this.description = Objects.requireNonNull(description);
     }
 
@@ -46,6 +48,10 @@ public class LocationData {
      */
     public Coordinates coordinates() {
         return coordinates;
+    }
+
+    public String requiredSkill() {
+        return requiredSkill;
     }
 
     /**

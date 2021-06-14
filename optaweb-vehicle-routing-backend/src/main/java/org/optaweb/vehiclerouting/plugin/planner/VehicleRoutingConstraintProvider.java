@@ -29,7 +29,7 @@ public class VehicleRoutingConstraintProvider implements ConstraintProvider {
     @Override
     public Constraint[] defineConstraints(ConstraintFactory constraintFactory) {
         return new Constraint[] {
-                add skill
+                skill(constraintFactory),
                 vehicleCapacity(constraintFactory),
                 distanceFromPreviousStandstill(constraintFactory),
                 distanceFromLastVisitToDepot(constraintFactory)
