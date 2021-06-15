@@ -42,8 +42,9 @@ class LocationRepositoryImpl implements LocationRepository {
     }
 
     @Override
-    public Location createLocation(Coordinates coordinates, String description) {
-        LocationEntity locationEntity = new LocationEntity(0, coordinates.latitude(), coordinates.longitude(), description);
+    public Location createLocation(Coordinates coordinates, String requiredSkill, String description) {
+        LocationEntity locationEntity =
+                new LocationEntity(0, coordinates.latitude(), coordinates.longitude(), requiredSkill, description);
         repository.persist(locationEntity);
         Location location = toDomain(locationEntity);
         logger.info("Created location {}.", location.fullDescription());

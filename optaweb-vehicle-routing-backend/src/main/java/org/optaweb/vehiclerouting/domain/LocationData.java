@@ -83,6 +83,6 @@ public class LocationData {
 
     @Override
     public String toString() {
-        return (description.isEmpty() ? "<noname>" : "'" + description + "'") + " " + coordinates;
+        return (description.isEmpty() ? "<noname>" : "'" + description + "'") + requiredSkill + " " + coordinates;
     }
 }

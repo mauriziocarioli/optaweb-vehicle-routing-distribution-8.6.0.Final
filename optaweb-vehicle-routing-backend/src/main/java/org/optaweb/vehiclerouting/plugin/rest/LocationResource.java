@@ -47,6 +47,7 @@ public class LocationResource {
     public void addLocation(PortableLocation request) {
         locationService.createLocation(
                 new Coordinates(request.getLatitude(), request.getLongitude()),
+                request.getRequiredSkill(),
                 request.getDescription());
     }
 

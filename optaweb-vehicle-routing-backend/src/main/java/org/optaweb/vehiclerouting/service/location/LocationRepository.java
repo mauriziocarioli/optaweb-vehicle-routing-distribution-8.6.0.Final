@@ -34,7 +34,7 @@ public interface LocationRepository {
      * @param description description of the location
      * @return a new location
      */
-    Location createLocation(Coordinates coordinates, String description);
+    Location createLocation(Coordinates coordinates, String requiredSkill, String description);
 
     /**
      * Get all locations.
@@ -63,4 +63,5 @@ public interface LocationRepository {
      * @return an Optional containing location with the given ID or empty Optional if there is no location with such ID
      */
     Optional<Location> find(long locationId);
+
 }

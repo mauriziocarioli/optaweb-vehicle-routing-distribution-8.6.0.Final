@@ -16,8 +16,6 @@
 
 package org.optaweb.vehiclerouting.domain;
 
-import java.util.Set;
-
 /**
  * Vehicle that can be used to deliver cargo to visits.
  */
@@ -25,7 +23,7 @@ public class Vehicle extends VehicleData {
 
     private final long id;
 
-    Vehicle(long id, String name, int capacity, Set<String> skillSet) {
+    Vehicle(long id, String name, int capacity, String skillSet) {
         super(name, capacity, skillSet);
         this.id = id;
     }
@@ -58,6 +56,6 @@ public class Vehicle extends VehicleData {
 
     @Override
     public String toString() {
-        return name().isEmpty() ? Long.toString(id) : (id + ": '" + name() + "'");
+        return name().isEmpty() ? Long.toString(id) : (id + ": '" + name() + " " + skillSet() + "`");
     }
 }

@@ -69,11 +69,12 @@ public class LocationService {
     }
 
     @Transactional
-    public synchronized Optional<Location> createLocation(Coordinates coordinates, String description) {
+    public synchronized Optional<Location> createLocation(Coordinates coordinates, String requiredSkill, String description) {
         Objects.requireNonNull(coordinates);
+        Objects.requireNonNull(requiredSkill);
         Objects.requireNonNull(description);
         // TODO if (router.isLocationAvailable(coordinates))
-        Location location = repository.createLocation(coordinates, description);
+        Location location = repository.createLocation(coordinates, requiredSkill, description);
         Optional<DistanceMatrixRow> distanceMatrixRow = addToMatrix(location);
         if (distanceMatrixRow.isPresent()) {
             planner.addLocation(location, distanceMatrixRow.get());

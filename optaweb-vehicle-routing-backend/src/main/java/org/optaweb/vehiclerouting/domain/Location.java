@@ -24,7 +24,7 @@ public class Location extends LocationData {
     private final long id;
 
     public Location(long id, Coordinates coordinates, String requiredSkill) {
-        super(coordinates, requiredSkill, null);
+        super(coordinates, requiredSkill, " ");
         this.id = id;
     }
 

@@ -71,16 +71,16 @@ public class DemoService {
     public void loadDemo(String name) {
         RoutingProblem routingProblem = routingProblems.byName(name);
         // Add depot
-        routingProblem.depot().ifPresent(depot -> addWithRetry(depot.coordinates(), depot.description()));
+        routingProblem.depot().ifPresent(depot -> addWithRetry(depot.coordinates(), "-", depot.description()));
 
         // TODO start randomizing only after using all available cities (=> reproducibility for small demos)
-        routingProblem.visits().forEach(visit -> addWithRetry(visit.coordinates(), visit.description()));
+        routingProblem.visits().forEach(visit -> addWithRetry(visit.coordinates(), visit.requiredSkill(), visit.description()));
         routingProblem.vehicles().forEach(vehicleService::createVehicle);
     }
 
-    private void addWithRetry(Coordinates coordinates, String description) {
+    private void addWithRetry(Coordinates coordinates, String requiredSkill, String description) {
         int tries = 0;
-        while (tries < MAX_TRIES && !locationService.createLocation(coordinates, description).isPresent()) {
+        while (tries < MAX_TRIES && !locationService.createLocation(coordinates, requiredSkill, description).isPresent()) {
             tries++;
         }
         if (tries == MAX_TRIES) {

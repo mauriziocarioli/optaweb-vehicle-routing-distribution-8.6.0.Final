@@ -41,16 +41,19 @@ class LocationEntity {
     @Column(precision = 10, scale = 7)
     private BigDecimal longitude;
 
+    private String requiredSkill;
+
     private String description;
 
     protected LocationEntity() {
         // for JPA
     }
 
-    LocationEntity(long id, BigDecimal latitude, BigDecimal longitude, String description) {
+    LocationEntity(long id, BigDecimal latitude, BigDecimal longitude, String requiredSkill, String description) {
         this.id = id;
         this.latitude = Objects.requireNonNull(latitude);
         this.longitude = Objects.requireNonNull(longitude);
+        this.requiredSkill = Objects.requireNonNull(requiredSkill);
         this.description = Objects.requireNonNull(description);
     }
 
@@ -66,6 +69,10 @@ class LocationEntity {
         return longitude;
     }
 
+    String getRequiredSkill() {
+        return requiredSkill;
+    }
+
     String getDescription() {
         return description;
     }
@@ -76,6 +83,7 @@ class LocationEntity {
                 "id=" + id +
                 ", latitude=" + latitude +
                 ", longitude=" + longitude +
+                ", requiredSkill=" + requiredSkill +
                 ", description='" + description + '\'' +
                 '}';
     }
