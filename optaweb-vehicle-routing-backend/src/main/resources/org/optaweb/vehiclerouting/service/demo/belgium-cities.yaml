@@ -3,22 +3,34 @@ name: "Belgium cities"
 vehicles:
   - name: "Vehicle 1"
     capacity: 10
-    skillSet: {"depot","blood transfusion"}
+    skillSet:
+      - "depot"
+      - "blood transfusion"
   - name: "Vehicle 2"
     capacity: 10
-    skillSet: {"depot","blood preservation"}
+    skillSet:
+      - "depot"
+      - "blood preservation"
   - name: "Vehicle 3"
     capacity: 10
-    skillSet: {"depot","blood preservation"}
+    skillSet:
+      - "depot"
+      - "blood preservation"
   - name: "Vehicle 4"
     capacity: 10
-    skillSet: {"depot","blood preservation"}
+    skillSet:
+      - "depot"
+      - "blood preservation"
   - name: "Vehicle 5"
     capacity: 10
-    skillSet: {"depot","blood preservation"}
+    skillSet:
+      - "depot"
+      - "blood preservation"
   - name: "Vehicle 6"
     capacity: 10
-    skillSet: {"depot","blood transfusion"}
+    skillSet:
+      - "depot"
+      - "blood transfusion"
 depot:
   label: "Brussels"
   lat: 50.85
@@ -44,7 +56,7 @@ visits:
   - label: "Bruges"
     lat: 51.216667
     lng: 3.233333
-    requiredAkill: "blood preservation"
+    requiredAkill: "blood transfusion"
   - label: "Charleroi"
     lat: 50.4
     lng: 4.433333
