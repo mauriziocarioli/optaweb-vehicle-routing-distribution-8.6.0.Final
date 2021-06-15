@@ -18,6 +18,7 @@ package org.optaweb.vehiclerouting.service.vehicle;
 
 import static java.util.Comparator.comparingLong;
 
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -44,7 +45,7 @@ public class VehicleService {
 
     @Transactional
     public Vehicle createVehicle() {
-        Vehicle vehicle = vehicleRepository.createVehicle(DEFAULT_VEHICLE_CAPACITY, "-");
+        Vehicle vehicle = vehicleRepository.createVehicle(DEFAULT_VEHICLE_CAPACITY, new HashSet<>());
         addVehicle(vehicle);
         return vehicle;
     }

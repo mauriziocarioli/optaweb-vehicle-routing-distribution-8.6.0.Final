@@ -17,6 +17,7 @@
 package org.optaweb.vehiclerouting.domain;
 
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * Data about a vehicle.
@@ -25,9 +26,9 @@ public class VehicleData {
 
     private final String name;
     private final int capacity;
-    private String skillSet;
+    private Set<String> skillSet;
 
-    VehicleData(String name, int capacity, String skillSet) {
+    VehicleData(String name, int capacity, Set<String> skillSet) {
         this.name = Objects.requireNonNull(name);
         this.capacity = capacity;
         this.skillSet = Objects.requireNonNull(skillSet);
@@ -56,7 +57,7 @@ public class VehicleData {
      * 
      * @return driver's skill set
      */
-    public String skillSet() {
+    public Set<String> skillSet() {
         return skillSet;
     }
 
@@ -76,11 +77,11 @@ public class VehicleData {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, capacity);
+        return Objects.hash(name, capacity, skillSet);
     }
 
     @Override
     public String toString() {
-        return name.isEmpty() ? "<noname>" : "'" + name + "' " + skillSet;
+        return name.isEmpty() ? "<noname>" : "'" + name + "' " + skillSet.toString();
     }
 }

@@ -17,6 +17,7 @@
 package org.optaweb.vehiclerouting.plugin.rest.model;
 
 import java.util.Objects;
+import java.util.Set;
 
 import org.optaweb.vehiclerouting.domain.Vehicle;
 
@@ -27,7 +28,7 @@ public class PortableVehicle {
 
     private final long id;
     private final String name;
-    private final String skillSet;
+    private final Set<String> skillSet;
     private final int capacity;
 
     static PortableVehicle fromVehicle(Vehicle vehicle) {
@@ -35,7 +36,7 @@ public class PortableVehicle {
         return new PortableVehicle(vehicle.id(), vehicle.name(), vehicle.skillSet(), vehicle.capacity());
     }
 
-    PortableVehicle(long id, String name, String skillSet, int capacity) {
+    PortableVehicle(long id, String name, Set<String> skillSet, int capacity) {
         this.id = id;
         this.name = Objects.requireNonNull(name);
         this.skillSet = skillSet;
@@ -50,7 +51,7 @@ public class PortableVehicle {
         return name;
     }
 
-    public String getSkillSet() {
+    public Set<String> getSkillSet() {
         return skillSet;
     }
 

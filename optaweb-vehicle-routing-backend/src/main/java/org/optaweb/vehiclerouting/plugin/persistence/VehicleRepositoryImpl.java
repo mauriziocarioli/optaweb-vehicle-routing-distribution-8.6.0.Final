@@ -20,6 +20,7 @@ import static java.util.stream.Collectors.toList;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -43,7 +44,7 @@ public class VehicleRepositoryImpl implements VehicleRepository {
     }
 
     @Override
-    public Vehicle createVehicle(int capacity, String skillSet) {
+    public Vehicle createVehicle(int capacity, Set<String> skillSet) {
         VehicleEntity vehicleEntity = new VehicleEntity(0, null, capacity, skillSet);
         repository.persist(vehicleEntity);
         vehicleEntity.setName("Vehicle " + vehicleEntity.getId());

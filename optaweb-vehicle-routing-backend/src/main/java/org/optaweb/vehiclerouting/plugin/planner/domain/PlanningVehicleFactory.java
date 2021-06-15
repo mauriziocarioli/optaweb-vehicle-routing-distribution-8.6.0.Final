@@ -16,6 +16,9 @@
 
 package org.optaweb.vehiclerouting.plugin.planner.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.optaweb.vehiclerouting.domain.Vehicle;
 
 /**
@@ -44,7 +47,7 @@ public class PlanningVehicleFactory {
      * @return new vehicle with zero capacity
      */
     public static PlanningVehicle testVehicle(long id) {
-        return vehicle(id, 0, "-");
+        return vehicle(id, 0, new HashSet<String>());
     }
 
     /**
@@ -53,11 +56,11 @@ public class PlanningVehicleFactory {
      * @param id vehicle's ID
      * @return new vehicle with the given capacity
      */
-    public static PlanningVehicle testVehicle(long id, int capacity, String skillSet) {
+    public static PlanningVehicle testVehicle(long id, int capacity, Set<String> skillSet) {
         return vehicle(id, capacity, skillSet);
     }
 
-    private static PlanningVehicle vehicle(long id, int capacity, String skillSet) {
+    private static PlanningVehicle vehicle(long id, int capacity, Set<String> skillSet) {
         PlanningVehicle vehicle = new PlanningVehicle();
         vehicle.setId(id);
         vehicle.setCapacity(capacity);
