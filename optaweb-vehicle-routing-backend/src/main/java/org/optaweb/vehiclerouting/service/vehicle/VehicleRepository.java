@@ -16,9 +16,9 @@
 
 package org.optaweb.vehiclerouting.service.vehicle;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import org.optaweb.vehiclerouting.domain.Vehicle;
 import org.optaweb.vehiclerouting.domain.VehicleData;
@@ -31,10 +31,11 @@ public interface VehicleRepository {
     /**
      * Create a vehicle with a unique ID.
      *
+     *
      * @param capacity vehicle's capacity
      * @return a new vehicle
      */
-    Vehicle createVehicle(int capacity, Set<String> skillSet);
+    Vehicle createVehicle(int capacity, HashSet<String> skillSet);
 
     /**
      * Create a vehicle from the given data.

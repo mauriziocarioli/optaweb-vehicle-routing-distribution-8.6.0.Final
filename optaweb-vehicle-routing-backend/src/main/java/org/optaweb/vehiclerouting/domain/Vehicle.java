@@ -16,7 +16,7 @@
 
 package org.optaweb.vehiclerouting.domain;
 
-import java.util.Set;
+import java.util.HashSet;
 
 /**
  * Vehicle that can be used to deliver cargo to visits.
@@ -25,7 +25,7 @@ public class Vehicle extends VehicleData {
 
     private final long id;
 
-    Vehicle(long id, String name, int capacity, Set<String> skillSet) {
+    Vehicle(long id, String name, int capacity, HashSet<String> skillSet) {
         super(name, capacity, skillSet);
         this.id = id;
     }

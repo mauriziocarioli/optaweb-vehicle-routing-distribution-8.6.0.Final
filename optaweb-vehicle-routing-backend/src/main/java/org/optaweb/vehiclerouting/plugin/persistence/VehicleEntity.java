@@ -16,7 +16,7 @@
 
 package org.optaweb.vehiclerouting.plugin.persistence;
 
-import java.util.Set;
+import java.util.HashSet;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,13 +34,13 @@ public class VehicleEntity {
     private long id;
     private String name;
     private int capacity;
-    private Set<String> skillSet;
+    private HashSet<String> skillSet;
 
     protected VehicleEntity() {
         // for JPA
     }
 
-    public VehicleEntity(long id, String name, int capacity, Set<String> skillSet) {
+    public VehicleEntity(long id, String name, int capacity, HashSet<String> skillSet) {
         this.id = id;
         this.name = name;
         this.capacity = capacity;
@@ -67,11 +67,11 @@ public class VehicleEntity {
         this.capacity = capacity;
     }
 
-    public Set<String> getSkillSet() {
+    public HashSet<String> getSkillSet() {
         return skillSet;
     }
 
-    public void setSkillSet(Set<String> skillSet) {
+    public void setSkillSet(HashSet<String> skillSet) {
         this.skillSet = skillSet;
     }
 
@@ -81,7 +81,7 @@ public class VehicleEntity {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", capacity=" + capacity +
-                ", skillSet=" + skillSet +
+                ", skillSet=" + skillSet.toString() +
                 '}';
     }
 }
