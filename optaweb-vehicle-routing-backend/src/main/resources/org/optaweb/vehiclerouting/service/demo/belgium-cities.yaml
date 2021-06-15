@@ -3,135 +3,182 @@ name: "Belgium cities"
 vehicles:
   - name: "Vehicle 1"
     capacity: 10
+    skillSet: {"depot","blood transfusion"}
   - name: "Vehicle 2"
     capacity: 10
+    skillSet: {"depot","blood preservation"}
   - name: "Vehicle 3"
     capacity: 10
+    skillSet: {"depot","blood preservation"}
   - name: "Vehicle 4"
     capacity: 10
+    skillSet: {"depot","blood preservation"}
   - name: "Vehicle 5"
     capacity: 10
+    skillSet: {"depot","blood preservation"}
   - name: "Vehicle 6"
     capacity: 10
+    skillSet: {"depot","blood transfusion"}
 depot:
   label: "Brussels"
   lat: 50.85
   lng: 4.35
+  requiredSkill: "depot"
 visits:
   - label: "Aalst"
     lat: 50.933333
     lng: 4.033333
+    requiredAkill: "blood preservation"
   - label: "Anderlecht"
     lat: 50.833333
     lng: 4.333333
+    requiredAkill: "blood preservation"
   - label: "Antwerp"
     lat: 51.217778
     lng: 4.400278
+    requiredAkill: "blood preservation"
   - label: "Beringen"
     lat: 51.033333
     lng: 5.216667
+    requiredAkill: "blood preservation"
   - label: "Bruges"
     lat: 51.216667
     lng: 3.233333
+    requiredAkill: "blood preservation"
   - label: "Charleroi"
     lat: 50.4
     lng: 4.433333
+    requiredAkill: "blood preservation"
   - label: "Chatelet"
     lat: 50.4
     lng: 4.516667
+    requiredAkill: "blood preservation"
   - label: "Dendermonde"
     lat: 51.033333
     lng: 4.1
+    requiredAkill: "blood preservation"
   - label: "Geel"
     lat: 51.166667
     lng: 5.0
+    requiredAkill: "blood preservation"
   - label: "Genk"
     lat: 50.966667
     lng: 5.5
+    requiredAkill: "blood preservation"
   - label: "Ghent"
     lat: 51.05
     lng: 3.733333
+    requiredAkill: "blood preservation"
   - label: "Halle"
     lat: 50.733333
     lng: 4.233333
+    requiredAkill: "blood preservation"
   - label: "Hasselt"
     lat: 50.93
     lng: 5.34
+    requiredAkill: "blood preservation"
   - label: "Ixelles"
     lat: 50.833333
     lng: 4.366667
+    requiredAkill: "blood preservation"
   - label: "Kortrijk"
     lat: 50.833333
     lng: 3.266667
+    requiredAkill: "blood preservation"
   - label: "La Louviere"
     lat: 50.466667
     lng: 4.183333
+    requiredAkill: "blood preservation"
   - label: "Leuven"
     lat: 50.883333
     lng: 4.7
+    requiredAkill: "blood preservation"
   - label: "Liege"
     lat: 50.633333
     lng: 5.566667
+    requiredAkill: "blood preservation"
   - label: "Lier"
     lat: 51.133333
     lng: 4.566667
+    requiredAkill: "blood preservation"
   - label: "Lokeren"
     lat: 51.1
     lng: 3.983333
+    requiredAkill: "blood preservation"
   - label: "Mechelen"
     lat: 51.016667
     lng: 4.466667
+    requiredAkill: "blood preservation"
   - label: "Molenbeek"
     lat: 50.857778
     lng: 4.315833
+    requiredAkill: "blood preservation"
   - label: "Mons"
     lat: 50.45
     lng: 3.95
+    requiredAkill: "blood preservation"
   - label: "Namur"
     lat: 50.466667
     lng: 4.866667
+    requiredAkill: "blood preservation"
   - label: "Ninove"
     lat: 50.833333
     lng: 4.016667
+    requiredAkill: "blood preservation"
   - label: "Roeselare"
     lat: 50.933333
     lng: 3.116667
+    requiredAkill: "blood preservation"
   - label: "Schaerbeek"
     lat: 50.866667
     lng: 4.383333
+    requiredAkill: "blood preservation"
   - label: "Seraing"
     lat: 50.583333
     lng: 5.5
+    requiredAkill: "blood preservation"
   - label: "Sint Niklaas"
     lat: 51.166667
     lng: 4.133333
+    requiredAkill: "blood preservation"
   - label: "Sint Truiden"
     lat: 50.8
     lng: 5.183333
+    requiredAkill: "blood preservation"
   - label: "Tienen"
     lat: 50.8
     lng: 4.933333
+    requiredAkill: "blood preservation"
   - label: "Tournai"
     lat: 50.6
     lng: 3.383333
+    requiredAkill: "blood preservation"
   - label: "Turnhout"
     lat: 51.316667
     lng: 4.95
+    requiredAkill: "blood preservation"
   - label: "Uccle"
     lat: 50.8
     lng: 4.333333
+    requiredAkill: "blood preservation"
   - label: "Verviers"
     lat: 50.583333
     lng: 5.85
+    requiredAkill: "blood preservation"
   - label: "Vilvoorde"
     lat: 50.933333
     lng: 4.416667
+    requiredAkill: "blood preservation"
   - label: "Waregem"
     lat: 50.883333
     lng: 3.416667
+    requiredAkill: "blood preservation"
   - label: "Wavre"
     lat: 50.716667
     lng: 4.6
+    requiredAkill: "blood preservation"
   - label: "Ypres"
     lat: 50.85
     lng: 2.883333
+    requiredAkill: "blood preservation"
+
