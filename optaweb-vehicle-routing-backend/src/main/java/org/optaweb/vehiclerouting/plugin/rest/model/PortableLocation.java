@@ -36,7 +36,7 @@ public class PortableLocation {
     @JsonProperty(value = "lng", required = true)
     private final BigDecimal longitude;
     @JsonProperty(value = "requiredSkill", required = true)
-    private final String requiredSkill = "-";
+    private final String requiredSkill;
 
     private final String description;
 
@@ -60,6 +60,7 @@ public class PortableLocation {
         this.id = id;
         this.latitude = Objects.requireNonNull(latitude);
         this.longitude = Objects.requireNonNull(longitude);
+        this.requiredSkill = Objects.requireNonNull(requiredSkill);
         this.description = Objects.requireNonNull(description);
     }
 
@@ -93,6 +94,7 @@ public class PortableLocation {
         }
         PortableLocation that = (PortableLocation) o;
         return id == that.id &&
+                requiredSkill.equals(that.requiredSkill) &&
                 description.equals(that.description) &&
                 latitude.compareTo(that.latitude) == 0 &&
                 longitude.compareTo(that.longitude) == 0;
@@ -100,14 +102,15 @@ public class PortableLocation {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, description, latitude, longitude);
+        return Objects.hash(id, description, requiredSkill, latitude, longitude);
     }
 
     @Override
     public String toString() {
         return "PortableLocation{" +
                 "id=" + id +
-                ", description='" + description + '\'' +
+                ", description='" + description + "'" +
+                ", requiredSkill='" + requiredSkill + "'" +
                 ", latitude=" + latitude +
                 ", longitude=" + longitude +
                 '}';
