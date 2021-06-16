@@ -83,6 +83,6 @@ class LocationRepositoryImpl implements LocationRepository {
         return new Location(
                 locationEntity.getId(),
                 new Coordinates(locationEntity.getLatitude(), locationEntity.getLongitude()),
-                locationEntity.getDescription());
+                locationEntity.getDescription(), locationEntity.getRequiredSkill());
     }
 }

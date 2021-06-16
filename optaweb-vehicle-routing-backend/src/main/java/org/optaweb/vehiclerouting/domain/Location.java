@@ -29,7 +29,7 @@ public class Location extends LocationData {
     }
 
     public Location(long id, Coordinates coordinates, String requiredSkill, String description) {
-        super(coordinates, requiredSkill, description);
+        super(coordinates, description, requiredSkill);
         this.id = id;
     }
 
