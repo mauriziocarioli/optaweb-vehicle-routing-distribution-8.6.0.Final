@@ -31,7 +31,10 @@ public class VehicleData {
     VehicleData(String name, int capacity, HashSet<String> skillSet) {
         this.name = Objects.requireNonNull(name);
         this.capacity = capacity;
-        this.skillSet = Objects.requireNonNull(skillSet);
+        //        this.skillSet = Objects.requireNonNull(skillSet);
+        if (skillSet == null)
+            skillSet = new HashSet<>();
+        this.skillSet = skillSet;
     }
 
     /**
