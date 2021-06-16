@@ -36,7 +36,7 @@ public class PortableLocation {
     @JsonProperty(value = "lng", required = true)
     private final BigDecimal longitude;
     @JsonProperty(value = "requiredSkill", required = true)
-    private final String requiredSkill = "-";
+    private final String requiredSkill;
 
     private final String description;
 
@@ -60,6 +60,7 @@ public class PortableLocation {
         this.id = id;
         this.latitude = Objects.requireNonNull(latitude);
         this.longitude = Objects.requireNonNull(longitude);
+        this.requiredSkill =  Objects.requireNonNull(requiredSkill);
         this.description = Objects.requireNonNull(description);
     }
 
