@@ -5,7 +5,8 @@ vehicles:
     capacity: 10
     skillSet:
       - "depot"
-      - "blood transfusion"
+      - "blood collection"
+      - "blood preservation"
   - name: "Vehicle 2"
     capacity: 10
     skillSet:
@@ -25,12 +26,14 @@ vehicles:
     capacity: 10
     skillSet:
       - "depot"
+      - "blood collection"
       - "blood preservation"
   - name: "Vehicle 6"
     capacity: 10
     skillSet:
       - "depot"
-      - "blood transfusion"
+      - "blood collection"
+      - "blood preservation"
 depot:
   label: "Brussels"
   lat: 50.85
@@ -56,7 +59,7 @@ visits:
   - label: "Bruges"
     lat: 51.216667
     lng: 3.233333
-    requiredSkill: "blood transfusion"
+    requiredSkill: "blood collection"
   - label: "Charleroi"
     lat: 50.4
     lng: 4.433333
@@ -76,7 +79,7 @@ visits:
   - label: "Genk"
     lat: 50.966667
     lng: 5.5
-    requiredSkill: "blood preservation"
+    requiredSkill: "blood collection"
   - label: "Ghent"
     lat: 51.05
     lng: 3.733333
@@ -100,7 +103,7 @@ visits:
   - label: "La Louviere"
     lat: 50.466667
     lng: 4.183333
-    requiredSkill: "blood preservation"
+    requiredSkill: "blood collection"
   - label: "Leuven"
     lat: 50.883333
     lng: 4.7
@@ -144,7 +147,7 @@ visits:
   - label: "Schaerbeek"
     lat: 50.866667
     lng: 4.383333
-    requiredSkill: "blood preservation"
+    requiredSkill: "blood collection"
   - label: "Seraing"
     lat: 50.583333
     lng: 5.5
@@ -180,7 +183,7 @@ visits:
   - label: "Vilvoorde"
     lat: 50.933333
     lng: 4.416667
-    requiredSkill: "blood preservation"
+    requiredSkill: "blood collection"
   - label: "Waregem"
     lat: 50.883333
     lng: 3.416667

@@ -70,6 +70,6 @@ public class Location extends LocationData {
 
     @Override
     public String toString() {
-        return description().isEmpty() ? Long.toString(id) : (id + ": '" + description() + "'");
+        return description().isEmpty() ? Long.toString(id) : (id + ": '" + "'" + requiredSkill() + "'" + description() + "'");
     }
 }
