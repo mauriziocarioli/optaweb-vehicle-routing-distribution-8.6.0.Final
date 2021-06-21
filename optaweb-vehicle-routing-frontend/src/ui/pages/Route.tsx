@@ -30,7 +30,7 @@ import { connect } from 'react-redux';
 import { clientOperations } from 'store/client';
 import { UserViewport } from 'store/client/types';
 import { routeOperations } from 'store/route';
-import { LatLng, Location, RouteWithTrack } from 'store/route/types';
+import { LatLng, Location, RouteWithTrack,LatLangWithId } from 'store/route/types';
 import { AppState } from 'store/types';
 import LocationList from 'ui/components/LocationList';
 import RouteMap from 'ui/components/RouteMap';
@@ -47,6 +47,7 @@ export interface StateProps {
 export interface DispatchProps {
   addHandler: typeof routeOperations.addLocation;
   removeHandler: typeof routeOperations.deleteLocation;
+  updateHandler: typeof routeOperations.updateLocation;
   updateViewport: typeof clientOperations.updateViewport;
 }
 
@@ -61,6 +62,7 @@ const mapStateToProps = ({ plan, serverInfo, userViewport }: AppState): StatePro
 const mapDispatchToProps: DispatchProps = {
   addHandler: routeOperations.addLocation,
   removeHandler: routeOperations.deleteLocation,
+  updateHandler: routeOperations.updateLocation,
   updateViewport: clientOperations.updateViewport,
 };
 
@@ -90,6 +92,11 @@ export class Route extends React.Component<RouteProps, RouteState> {
   onSelectLocation(id: number) {
     this.setState({ selectedId: id });
   }
+
+  handleUpdateLocation(value: LatLangWithId)
+  {
+    this.props.updateHandler(value);
+  } 
 
   render() {
     const { selectedId, selectedRouteId } = this.state;
@@ -146,6 +153,7 @@ export class Route extends React.Component<RouteProps, RouteState> {
               visits={filteredVisits}
               removeHandler={removeHandler}
               selectHandler={this.onSelectLocation}
+              updateHandler={this.handleUpdateLocation}
             />
           </SplitItem>
           <SplitItem isFilled>

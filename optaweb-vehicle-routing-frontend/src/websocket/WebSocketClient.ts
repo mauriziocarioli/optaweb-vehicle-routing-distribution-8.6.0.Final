@@ -15,7 +15,7 @@
  */
 
 import { MessagePayload } from 'store/message/types';
-import { LatLngWithDescription, RoutingPlan } from 'store/route/types';
+import { LatLangWithId, LatLngWithDescription, RoutingPlan } from 'store/route/types';
 import { ServerInfo } from 'store/server/types';
 
 export default class WebSocketClient {
@@ -57,6 +57,16 @@ export default class WebSocketClient {
   deleteLocation(locationId: number): Promise<Response> {
     // TODO error callback
     return fetch(`${this.backendUrl}/location/${locationId}`, { method: 'DELETE' });
+  }
+
+  updateLocation(latLng: LatLangWithId) : Promise<Response> {
+    return fetch(`${this.backendUrl}/location/${latLng.locationid}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(latLng),
+    });
   }
 
   deleteAnyVehicle(): Promise<Response> {

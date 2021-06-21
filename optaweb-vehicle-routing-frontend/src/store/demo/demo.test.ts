@@ -64,21 +64,24 @@ describe('Demo reducers', () => {
   });
 });
 
-const vehicle1: Vehicle = { id: 1, name: 'v1', capacity: 5 };
+const vehicle1: Vehicle = { id: 1, name: 'v1', capacity: 5, skillSet: ['any'] };
 const visit1 = {
   id: 1,
   lat: 1.345678,
   lng: 1.345678,
+  requiredSkill: 'any'
 };
 const visit2 = {
   id: 2,
   lat: 2.345678,
   lng: 2.345678,
+  requiredSkill: 'any'
 };
 const visit3 = {
   id: 3,
   lat: 3.676111,
   lng: 3.568333,
+  requiredSkill: 'any'
 };
 
 const state: AppState = {

@@ -27,6 +27,7 @@ describe('Vehicle Component', () => {
       id: 10,
       description: 'x',
       capacity: 7,
+      skillSet: ['any'],
       removeHandler: jest.fn(),
       capacityChangeHandler: jest.fn(),
     };

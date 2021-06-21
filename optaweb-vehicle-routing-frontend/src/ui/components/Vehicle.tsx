@@ -31,6 +31,7 @@ export interface VehicleProps {
   id: number;
   description: string;
   capacity: number;
+  skillSet: string[];
   removeHandler: (id: number) => void;
   capacityChangeHandler: (vehicleCapacity: VehicleCapacity) => void;
 }
@@ -39,6 +40,7 @@ const Vehicle: React.FC<VehicleProps> = ({
   id,
   description,
   capacity,
+  skillSet,
   removeHandler,
   capacityChangeHandler,
 }) => {
@@ -52,6 +54,14 @@ const Vehicle: React.FC<VehicleProps> = ({
       <DataListItemRow>
         <DataListCell isFilled>
           <span id={`vehicle-${id}`}>{description}</span>
+        </DataListCell>
+        <DataListCell isFilled>
+          <span id={`vehicle-${id}`}>Skill Set : </span> 
+          {
+            skillSet.map(function(element,index) {
+             return <span>{element} ,</span>;
+            })
+          }
         </DataListCell>
         <DataListCell isFilled>
           <InputGroup>

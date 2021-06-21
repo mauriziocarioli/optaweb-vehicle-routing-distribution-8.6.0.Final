@@ -59,6 +59,7 @@ describe('Demo page', () => {
         lat: 1,
         lng: 1,
         description: '',
+        requiredSkill: 'any'
       },
     };
     const demo = shallow(<Demo {...props} />);
@@ -87,6 +88,7 @@ const emptyRouteProps: DemoProps = {
   clearHandler: jest.fn(),
   addVehicleHandler: jest.fn,
   removeVehicleHandler: jest.fn,
+  updateLocationHandler: jest.fn,
   addLocationHandler: jest.fn(),
   removeLocationHandler: jest.fn(),
   updateViewport: jest.fn(),
@@ -109,6 +111,7 @@ const threeLocationsProps: DemoProps = {
   clearHandler: jest.fn(),
   addVehicleHandler: jest.fn,
   removeVehicleHandler: jest.fn,
+  updateLocationHandler: jest.fn,
   addLocationHandler: jest.fn(),
   removeLocationHandler: jest.fn(),
   updateViewport: jest.fn(),
@@ -125,32 +128,38 @@ const threeLocationsProps: DemoProps = {
     id: 1,
     lat: 1.345678,
     lng: 1.345678,
+    requiredSkill: 'any'
   },
 
   visits: [{
     id: 2,
     lat: 2.345678,
     lng: 2.345678,
+    requiredSkill: 'any'
   }, {
     id: 3,
     lat: 3.676111,
     lng: 3.568333,
+    requiredSkill: 'any'
   }],
 
   routes: [{
-    vehicle: { id: 1, name: 'v1', capacity: 5 },
+    vehicle: { id: 1, name: 'v1', capacity: 5, skillSet: ['any']},
     visits: [{
       id: 1,
       lat: 1.345678,
       lng: 1.345678,
+      requiredSkill: 'any'
     }, {
       id: 2,
       lat: 2.345678,
       lng: 2.345678,
+      requiredSkill: 'any'
     }, {
       id: 3,
       lat: 3.676111,
       lng: 3.568333,
+      requiredSkill: 'any'
     }],
 
     track: [],

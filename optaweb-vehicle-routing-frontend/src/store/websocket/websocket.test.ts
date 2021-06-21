@@ -238,37 +238,43 @@ const emptyPlan: RoutingPlan = {
   routes: [],
 };
 
-const vehicle1: Vehicle = { id: 1, name: 'v1', capacity: 5 };
-const vehicle2: Vehicle = { id: 2, name: 'v2', capacity: 5 };
+const vehicle1: Vehicle = { id: 1, name: 'v1', capacity: 5, skillSet: ['any'] };
+const vehicle2: Vehicle = { id: 2, name: 'v2', capacity: 5, skillSet: ['any'] };
 const visit1 = {
   id: 1,
   lat: 1.345678,
   lng: 1.345678,
+  requiredSkill: 'any'
 };
 const visit2 = {
   id: 2,
   lat: 2.345678,
   lng: 2.345678,
+  requiredSkill: 'any'
 };
 const visit3 = {
   id: 3,
   lat: 3.676111,
   lng: 3.568333,
+  requiredSkill: 'any'
 };
 const visit4 = {
   id: 4,
   lat: 4.345678,
   lng: 4.345678,
+  requiredSkill: 'any'
 };
 const visit5 = {
   id: 5,
   lat: 5.345678,
   lng: 5.345678,
+  requiredSkill: 'any'
 };
 const visit6 = {
   id: 6,
   lat: 6.676111,
   lng: 6.568333,
+  requiredSkill: 'any'
 };
 const nonEmptyPlan: RoutingPlan = {
   distance: '1.0',

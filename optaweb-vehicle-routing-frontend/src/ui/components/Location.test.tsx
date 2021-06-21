@@ -25,9 +25,13 @@ describe('Location Component', () => {
     const props: LocationProps = {
       id: 10,
       description: 'x',
+      requiredSkill: 'y',
+      lat: 23.2323,
+      lng: 23.2443,
       removeDisabled: false,
       removeHandler: jest.fn(),
       selectHandler: jest.fn(),
+      updateHandler: jest.fn()
     };
     const location = shallow(<Location {...props} />);
     expect(toJson(location)).toMatchSnapshot();
@@ -42,9 +46,13 @@ describe('Location Component', () => {
     const props: LocationProps = {
       id: 11,
       description: null,
+      lat: 23.2323,
+      lng: 23.2443,
+      requiredSkill: 'any',
       removeDisabled: false,
       removeHandler: jest.fn(),
       selectHandler: jest.fn(),
+      updateHandler: jest.fn(),
     };
     const location = shallow(<Location {...props} />);
     expect(toJson(location)).toMatchSnapshot();

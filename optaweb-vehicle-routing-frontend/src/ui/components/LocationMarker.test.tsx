@@ -25,6 +25,7 @@ const location: Location = {
   id: 1,
   lat: 1.345678,
   lng: 1.345678,
+  requiredSkill: 'any'
 };
 
 describe('Location Marker', () => {

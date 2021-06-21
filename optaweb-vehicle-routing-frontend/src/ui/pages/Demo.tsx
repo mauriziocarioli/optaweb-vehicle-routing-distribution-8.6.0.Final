@@ -27,7 +27,7 @@ import {
   SplitItem,
   Text,
   TextContent,
-  TextVariants,
+  TextVariants
 } from '@patternfly/react-core';
 import { MinusIcon, PlusIcon } from '@patternfly/react-icons';
 import { backendUrl } from 'common';
@@ -37,7 +37,7 @@ import { clientOperations } from 'store/client';
 import { UserViewport } from 'store/client/types';
 import { demoOperations } from 'store/demo';
 import { routeOperations } from 'store/route';
-import { LatLng, Location, RouteWithTrack } from 'store/route/types';
+import { LatLangWithId, LatLng, Location, RouteWithTrack } from 'store/route/types';
 import { AppState } from 'store/types';
 import { DemoDropdown } from 'ui/components/DemoDropdown';
 import LocationList from 'ui/components/LocationList';
@@ -45,6 +45,8 @@ import RouteMap from 'ui/components/RouteMap';
 import SearchBox, { Result } from 'ui/components/SearchBox';
 import { sideBarStyle } from 'ui/pages/common';
 import { DistanceInfo, VehiclesInfo, VisitsInfo } from 'ui/pages/InfoBlock';
+import { SimpleModal } from 'ui/modal/SimpleModal';
+
 
 export const ID_CLEAR_BUTTON = 'clear-button';
 export const ID_EXPORT_BUTTON = 'export-button';
@@ -67,6 +69,7 @@ export interface DispatchProps {
   clearHandler: typeof routeOperations.clearRoute;
   addLocationHandler: typeof routeOperations.addLocation;
   removeLocationHandler: typeof routeOperations.deleteLocation;
+  updateLocationHandler: typeof routeOperations.updateLocation;
   addVehicleHandler: typeof routeOperations.addVehicle;
   removeVehicleHandler: typeof routeOperations.deleteAnyVehicle;
   updateViewport: typeof clientOperations.updateViewport;
@@ -84,7 +87,7 @@ const mapStateToProps = ({ plan, demo, serverInfo, userViewport }: AppState): St
   // TODO use selector
   // TODO sort demos alphabetically?
   demoNames: (serverInfo.demos && serverInfo.demos.map((value) => value.name)) || [],
-  userViewport,
+  userViewport
 });
 
 const mapDispatchToProps: DispatchProps = {
@@ -92,6 +95,7 @@ const mapDispatchToProps: DispatchProps = {
   clearHandler: routeOperations.clearRoute,
   addLocationHandler: routeOperations.addLocation,
   removeLocationHandler: routeOperations.deleteLocation,
+  updateLocationHandler: routeOperations.updateLocation,
   addVehicleHandler: routeOperations.addVehicle,
   removeVehicleHandler: routeOperations.deleteAnyVehicle,
   updateViewport: clientOperations.updateViewport,
@@ -101,32 +105,89 @@ export type DemoProps = DispatchProps & StateProps;
 
 export interface DemoState {
   selectedId: number;
+  isModalOpen: boolean;
+  currentEvent: any;
 }
 
 export class Demo extends React.Component<DemoProps, DemoState> {
+ 
+  requiredSkill: string = "";
+  options = [
+    { value: 'blood preservation', label: 'Blood Preservation', disabled: false },
+    { value: 'blood transfusion', label: 'Blood Transfusion', disabled: false },
+    { value: 'depot', label: 'Depot', disabled: false },
+    { value: 'vaccination', label: 'Vaccination', disabled: false },
+    { value: 'testkit', label: 'Testkit', disabled: false }
+    
+  ];
   constructor(props: DemoProps) {
     super(props);
 
     this.state = {
       selectedId: NaN,
+      isModalOpen: false,
+      currentEvent: {}
     };
     this.handleDemoLoadClick = this.handleDemoLoadClick.bind(this);
     this.handleMapClick = this.handleMapClick.bind(this);
     this.handleSearchResultClick = this.handleSearchResultClick.bind(this);
     this.onSelectLocation = this.onSelectLocation.bind(this);
+    this.handleModalToggle = this.handleModalToggle.bind(this);
+    this.onConfirmSelection = this.onConfirmSelection.bind(this);
+    this.handleUpdateLocation = this.handleUpdateLocation.bind(this);
   }
+
+  
+  onConfirmSelection(data : any)
+  {
+    console.log(data);
+    console.log("Skill : " + data.skill);
+    this.setState({isModalOpen: !this.state.isModalOpen});
+    let description = data.address ? data.address : "";
+    this.props.addLocationHandler({ ...data.eventData, description: description,requiredSkill: data.skill }); // TODO use reverse geocoding to find address
+  }
+
+  handleModalToggle()
+  {
+     this.setState({isModalOpen: !this.state.isModalOpen});
+     console.log(this.state.isModalOpen);
+  }
+
+  openModal(e: any)
+  {
+    this.setState({isModalOpen: true,currentEvent: e});
+  }
+
 
   handleMapClick(e: any) {
-    this.props.addLocationHandler({ ...e.latlng, description: '' }); // TODO use reverse geocoding to find address
+    //const rootElement = document.getElementById("root");
+    console.log(e);
+    this.openModal(e);
+    //this.props.addLocationHandler({ ...e.latlng, description: '' }); // TODO use reverse geocoding to find address
   }
 
+  handleAddLocation(e: any,skill: string)
+  {
+    this.props.addLocationHandler({ ...e.latlng, description: '' ,requiredSkill: skill});
+  }
+
+  handleUpdateLocation(latlangLoc : LatLangWithId,value : any)
+  {
+    latlangLoc.requiredSkill = value;
+    this.props.updateLocationHandler(latlangLoc);
+  }
+
+
   handleSearchResultClick(result: Result) {
-    this.props.addLocationHandler({ ...result.latLng, description: result.address });
+    this.openModal(result);
+    //this.props.addLocationHandler({ ...result.latLng, description: result.address,requiredSkill: 'test' });
   }
 
   handleDemoLoadClick(demoName: string) {
     this.props.loadHandler(demoName);
   }
+
+
 
   onSelectLocation(id: number) {
     this.setState({ selectedId: id });
@@ -157,7 +218,12 @@ export class Demo extends React.Component<DemoProps, DemoState> {
     };
 
     return (
-      // FIXME find a way to avoid these style customizations
+      <div>
+      <SimpleModal canShow={this.state.isModalOpen} 
+                   eventData={this.state.currentEvent} 
+                   options={this.options} 
+                   onConfirm={this.onConfirmSelection}
+                   onClose={this.handleModalToggle}/>
       <Split gutter={GutterSize.md} style={{ overflowY: 'auto' }}>
         <SplitItem
           isFilled={false}
@@ -176,6 +242,7 @@ export class Demo extends React.Component<DemoProps, DemoState> {
             visits={visits}
             removeHandler={removeLocationHandler}
             selectHandler={this.onSelectLocation}
+            updateHandler={this.handleUpdateLocation}
           />
         </SplitItem>
 
@@ -258,6 +325,7 @@ export class Demo extends React.Component<DemoProps, DemoState> {
           />
         </SplitItem>
       </Split>
+      </div>
     );
   }
 }

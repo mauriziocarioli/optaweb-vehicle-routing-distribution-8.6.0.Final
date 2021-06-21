@@ -21,6 +21,7 @@ import {
   AddVehicleAction,
   ClearRouteAction,
   DeleteLocationAction,
+  UpdateLocationAction,
   DeleteVehicleAction,
   LatLngWithDescription,
   RoutingPlan,
@@ -44,6 +45,11 @@ export const addLocation: ActionFactory<LatLngWithDescription, AddLocationAction
 export const deleteLocation: ActionFactory<number, DeleteLocationAction> = (id) => ({
   type: ActionType.DELETE_LOCATION,
   value: id,
+});
+
+export const updateLocation: ActionFactory<LatLngWithDescription, UpdateLocationAction> = (location) => ({
+  type: ActionType.UPDATE_LOCATION,
+  value: location,
 });
 
 export const clearRoute: ActionFactory<void, ClearRouteAction> = () => ({

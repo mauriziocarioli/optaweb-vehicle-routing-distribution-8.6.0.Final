@@ -41,6 +41,7 @@ const userViewport: UserViewport = {
 const noRoutes: RouteProps = {
   addHandler: jest.fn(),
   removeHandler: jest.fn(),
+  updateHandler: jest.fn(),
   updateViewport: jest.fn(),
 
   boundingBox: null,
@@ -55,31 +56,37 @@ const depot = {
   id: 1,
   lat: 1.345678,
   lng: 1.345678,
+  requiredSkill: 'any'
 };
 const visit2 = {
   id: 2,
   lat: 2.345678,
   lng: 2.345678,
+  requiredSkill: 'any'
 };
 const visit3 = {
   id: 3,
   lat: 3.676111,
   lng: 3.568333,
+  requiredSkill: 'any'
 };
 const visit4 = {
   id: 4,
   lat: 4.345678,
   lng: 4.345678,
+  requiredSkill: 'any'
 };
 const visit5 = {
   id: 5,
   lat: 5.345678,
   lng: 5.345678,
+  requiredSkill: 'any'
 };
 
 const twoRoutes: RouteProps = {
   addHandler: jest.fn(),
   removeHandler: jest.fn(),
+  updateHandler: jest.fn(),
   updateViewport: jest.fn(),
 
   boundingBox: null,
@@ -89,13 +96,13 @@ const twoRoutes: RouteProps = {
   visits: [visit2, visit3, visit4, visit5],
 
   routes: [{
-    vehicle: { id: 1, name: 'v1', capacity: 5 },
+    vehicle: { id: 1, name: 'v1', capacity: 5, skillSet: ['any'] },
     visits: [depot, visit2, visit3],
 
     track: [],
 
   }, {
-    vehicle: { id: 2, name: 'v2', capacity: 5 },
+    vehicle: { id: 2, name: 'v2', capacity: 5, skillSet: ['any'] },
     visits: [depot, visit4, visit5],
 
     track: [],

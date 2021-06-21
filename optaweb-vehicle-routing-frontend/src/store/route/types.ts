@@ -23,18 +23,26 @@ export interface LatLng {
 
 export interface LatLngWithDescription extends LatLng {
   description: string;
+  requiredSkill: string;
+}
+
+export interface LatLangWithId extends LatLngWithDescription
+{
+   locationid : number
 }
 
 export interface Location extends LatLng {
   readonly id: number;
   // TODO decide between optional, nullable and more complex structure (displayName, fullDescription, address, ...)
   readonly description?: string;
+  readonly requiredSkill: string;
 }
 
 export interface Vehicle {
   readonly id: number;
   readonly name: string;
   readonly capacity: number;
+  readonly skillSet: string[];
 }
 
 export interface Route {
@@ -60,6 +68,7 @@ export enum ActionType {
   UPDATE_ROUTING_PLAN = 'UPDATE_ROUTING_PLAN',
   DELETE_LOCATION = 'DELETE_LOCATION',
   ADD_LOCATION = 'ADD_LOCATION',
+  UPDATE_LOCATION = 'UPDATE_LOCATION',
   ADD_VEHICLE = 'ADD_VEHICLE',
   DELETE_VEHICLE = 'DELETE_VEHICLE',
   CLEAR_SOLUTION = 'CLEAR_SOLUTION',
@@ -77,6 +86,10 @@ export interface ClearRouteAction extends Action<ActionType.CLEAR_SOLUTION> {
 
 export interface DeleteLocationAction extends Action<ActionType.DELETE_LOCATION> {
   readonly value: number;
+}
+
+export interface UpdateLocationAction extends Action<ActionType.UPDATE_LOCATION>{
+  readonly value: LatLngWithDescription;
 }
 
 export interface DeleteVehicleAction extends Action<ActionType.DELETE_VEHICLE> {

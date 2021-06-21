@@ -16,13 +16,14 @@
 
 import { Bullseye, DataList } from '@patternfly/react-core';
 import * as React from 'react';
-import { Location } from 'store/route/types';
+import { LatLangWithId, Location } from 'store/route/types';
 import LocationItem from './Location';
 import './LocationList.css';
 
 export interface LocationListProps {
   removeHandler: (id: number) => void;
   selectHandler: (id: number) => void;
+  updateHandler: (value: LatLangWithId,value1: any) => void;
   depot: Location | null;
   visits: Location[];
 }
@@ -38,6 +39,7 @@ const renderLocationList: React.FC<LocationListProps> = ({
   visits,
   removeHandler,
   selectHandler,
+  updateHandler
 }) => (
   <div style={{ overflowY: 'auto' }} data-cy="location-list">
     <DataList
@@ -47,10 +49,14 @@ const renderLocationList: React.FC<LocationListProps> = ({
         <LocationItem
           key={depot.id}
           id={depot.id}
+          lat={depot.lat}
+          lng={depot.lng}
           description={depot.description || null}
+          requiredSkill={depot.requiredSkill}
           removeDisabled={visits.length > 0}
           removeHandler={removeHandler}
           selectHandler={selectHandler}
+          updateHandler={updateHandler}
         />
       )}
       {visits
@@ -61,10 +67,14 @@ const renderLocationList: React.FC<LocationListProps> = ({
           <LocationItem
             key={visit.id}
             id={visit.id}
+            lat={visit.lat}
+            lng={visit.lng}
             description={visit.description || null}
+            requiredSkill={visit.requiredSkill}
             removeDisabled={false}
             removeHandler={removeHandler}
             selectHandler={selectHandler}
+            updateHandler={updateHandler}
           />
         ))}
     </DataList>

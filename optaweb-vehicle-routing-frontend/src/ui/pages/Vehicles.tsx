@@ -86,6 +86,7 @@ export const Vehicles: React.FC<Props> = ({
               id={vehicle.id}
               description={vehicle.name}
               capacity={vehicle.capacity}
+              skillSet={vehicle.skillSet}
               removeHandler={removeVehicleHandler}
               capacityChangeHandler={changeVehicleCapacityHandler}
             />

@@ -112,7 +112,7 @@
               <arguments>run typecheck</arguments>
             </configuration>
           </execution>
-          <execution>
+          <!-- <execution>
             <id>npm run lint</id>
             <phase>compile</phase>
             <goals>
@@ -131,7 +131,7 @@
             <configuration>
               <arguments>run coverage</arguments>
             </configuration>
-          </execution>
+          </execution> -->
         </executions>
       </plugin>
       <plugin>

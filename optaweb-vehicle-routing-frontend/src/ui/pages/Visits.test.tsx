@@ -34,6 +34,7 @@ describe('Visits page', () => {
 const noVisits: Props = {
   addHandler: jest.fn(),
   removeHandler: jest.fn(),
+  updateHandler: jest.fn(),
 
   depot: null,
   visits: [],
@@ -42,20 +43,24 @@ const noVisits: Props = {
 const twoVisits: Props = {
   addHandler: jest.fn(),
   removeHandler: jest.fn(),
+  updateHandler: jest.fn(),
 
   depot: {
     id: 1,
     lat: 1.345678,
     lng: 1.345678,
+    requiredSkill: 'any'
   },
 
   visits: [{
     id: 2,
     lat: 2.345678,
     lng: 2.345678,
+    requiredSkill: 'any'
   }, {
     id: 3,
     lat: 3.676111,
     lng: 3.568333,
+    requiredSkill: 'any'
   }],
 };

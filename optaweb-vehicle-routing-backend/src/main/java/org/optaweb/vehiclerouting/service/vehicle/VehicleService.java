@@ -45,7 +45,9 @@ public class VehicleService {
 
     @Transactional
     public Vehicle createVehicle() {
-        Vehicle vehicle = vehicleRepository.createVehicle(DEFAULT_VEHICLE_CAPACITY, new HashSet<>());
+        HashSet<String> skillset = new HashSet<String>();
+        skillset.add("depot");
+        Vehicle vehicle = vehicleRepository.createVehicle(DEFAULT_VEHICLE_CAPACITY, skillset);
         addVehicle(vehicle);
         return vehicle;
     }

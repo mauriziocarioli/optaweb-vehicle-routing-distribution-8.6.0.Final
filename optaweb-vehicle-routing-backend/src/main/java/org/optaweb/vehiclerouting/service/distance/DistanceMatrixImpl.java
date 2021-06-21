@@ -40,6 +40,12 @@ class DistanceMatrixImpl implements DistanceMatrix {
     }
 
     @Override
+    public DistanceMatrixRow updateLocation(Location newLocation) {
+        this.removeLocation(newLocation);
+        return this.addLocation(newLocation);
+    }
+
+    @Override
     public DistanceMatrixRow addLocation(Location newLocation) {
         Map<Long, Distance> distancesToOthers = updateMatrixLazily(newLocation);
         return locationId -> distancesToOthers.computeIfAbsent(locationId, wrongId -> {

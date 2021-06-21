@@ -45,6 +45,7 @@ describe('WebSocketClient', () => {
       lat: 1,
       lng: 2,
       description: 'test',
+      requiredSkill: 'any'
     };
     fetchMock.postOnce('*', 200);
 

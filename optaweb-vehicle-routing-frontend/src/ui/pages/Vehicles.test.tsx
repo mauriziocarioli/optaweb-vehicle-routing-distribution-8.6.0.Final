@@ -26,8 +26,8 @@ describe('Vehicles page', () => {
       removeVehicleHandler: jest.fn(),
       changeVehicleCapacityHandler: jest.fn,
       vehicles: [
-        { id: 1, name: 'Vehicle 1', capacity: 5 },
-        { id: 2, name: 'Vehicle 2', capacity: 5 },
+        { id: 1, name: 'Vehicle 1', capacity: 5, skillSet: ['any'] },
+        { id: 2, name: 'Vehicle 2', capacity: 5, skillSet: ['any'] },
       ],
     };
     const vehicles = shallow(<Vehicles {...props} />);

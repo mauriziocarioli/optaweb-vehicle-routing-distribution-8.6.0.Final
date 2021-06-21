@@ -35,11 +35,13 @@ const mapStateToProps = ({ plan }: AppState): StateProps => ({
 export interface DispatchProps {
   addHandler: typeof routeOperations.addLocation;
   removeHandler: typeof routeOperations.deleteLocation;
+  updateHandler: typeof routeOperations.updateLocation;
 }
 
 const mapDispatchToProps: DispatchProps = {
   addHandler: routeOperations.addLocation,
   removeHandler: routeOperations.deleteLocation,
+  updateHandler: routeOperations.updateLocation,
 };
 
 export type Props = StateProps & DispatchProps;
@@ -48,6 +50,7 @@ export const Visits: React.FC<Props> = ({
   depot,
   visits,
   removeHandler,
+  updateHandler
 }: Props) => (
   <>
     <TextContent>
@@ -56,6 +59,7 @@ export const Visits: React.FC<Props> = ({
     {/* TODO do not show depots */}
     <LocationList
       removeHandler={removeHandler}
+      updateHandler={updateHandler}
       selectHandler={() => undefined}
       depot={depot}
       visits={visits}

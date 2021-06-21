@@ -19,5 +19,5 @@ import React from 'react';
 export const sideBarStyle: React.CSSProperties = {
   display: 'flex',
   flexDirection: 'column',
-  width: '320px',
+  width: '500px',
 };
