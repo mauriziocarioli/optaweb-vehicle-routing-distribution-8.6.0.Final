@@ -24,13 +24,31 @@ public class PlanningLocation {
     // Only used to calculate angle.
     private final double latitude;
     private final double longitude;
+    private final String requiredSkill;
     private final DistanceMap travelDistanceMap;
 
-    PlanningLocation(long id, double latitude, double longitude, DistanceMap travelDistanceMap) {
+    PlanningLocation(long id, double latitude, double longitude, DistanceMap travelDistanceMap, String requiredSkill) {
         this.id = id;
         this.latitude = latitude;
         this.longitude = longitude;
         this.travelDistanceMap = Objects.requireNonNull(travelDistanceMap);
+        this.requiredSkill = requiredSkill;
+    }
+
+    public double getLatitude() {
+        return this.latitude;
+    }
+
+    public double getLongitude() {
+        return this.longitude;
+    }
+
+    public String getRequiredSkill() {
+        return this.requiredSkill;
+    }
+
+    public DistanceMap getTravelDistanceMap() {
+        return this.travelDistanceMap;
     }
 
     /**

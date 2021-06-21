@@ -50,7 +50,7 @@ public class PlanningLocationFactory {
                 location.id(),
                 location.coordinates().latitude().doubleValue(),
                 location.coordinates().longitude().doubleValue(),
-                distanceMap);
+                distanceMap, location.requiredSkill());
     }
 
     /**
@@ -71,7 +71,7 @@ public class PlanningLocationFactory {
      * @return planning location with distance map and without coordinates
      */
     public static PlanningLocation testLocation(long id, DistanceMap distanceMap) {
-        return new PlanningLocation(id, 0, 0, distanceMap);
+        return new PlanningLocation(id, 0, 0, distanceMap, "depot");
     }
 
     private static long failFast(PlanningLocation location) {

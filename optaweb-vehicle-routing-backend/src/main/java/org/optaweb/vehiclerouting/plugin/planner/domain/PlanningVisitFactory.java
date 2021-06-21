@@ -34,7 +34,7 @@ public class PlanningVisitFactory {
      * @return new visit with the default demand
      */
     public static PlanningVisit fromLocation(PlanningLocation location) {
-        return fromLocation(location, DEFAULT_VISIT_DEMAND);
+        return fromLocation(location, DEFAULT_VISIT_DEMAND, location.getRequiredSkill());
     }
 
     /**
@@ -44,11 +44,12 @@ public class PlanningVisitFactory {
      * @param demand visit's demand
      * @return visit with demand at the given location
      */
-    public static PlanningVisit fromLocation(PlanningLocation location, int demand) {
+    public static PlanningVisit fromLocation(PlanningLocation location, int demand, String requiredSkill) {
         PlanningVisit visit = new PlanningVisit();
         visit.setId(location.getId());
         visit.setLocation(location);
         visit.setDemand(demand);
+        visit.setRequiredSkill(requiredSkill);
         return visit;
     }
 

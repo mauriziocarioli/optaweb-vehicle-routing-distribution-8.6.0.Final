@@ -62,6 +62,7 @@ public class PlanningVehicle implements Standstill {
     }
 
     public Set<String> getSkillSet() {
+        //System.out.println("skillSet : " + skillSet.toString());
         return skillSet;
     }
 

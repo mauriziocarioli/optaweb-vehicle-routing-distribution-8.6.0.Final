@@ -65,7 +65,13 @@ public class VehicleRoutingConstraintProvider implements ConstraintProvider {
 
     Constraint skill(ConstraintFactory constraintFactory) {
         return constraintFactory.from(PlanningVisit.class)
-                .filter(visit -> !visit.getVehicle().getSkillSet().contains(visit.getRequiredSkill()))
+                .filter(visit -> {
+                    /*
+                     * System.out.println("visit vehicle : " + visit.getVehicle().getSkillSet() + " , Required Skill : "
+                     * + visit.getLocation().getRequiredSkill());
+                     */
+                    return !visit.getVehicle().getSkillSet().contains(visit.getRequiredSkill());
+                })
                 .penalize(
                         "required skill",
                         HardSoftLongScore.ONE_HARD);
